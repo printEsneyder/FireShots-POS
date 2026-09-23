@@ -1,7 +1,7 @@
 {
   "name": "fireshots_pos",
   "version": "1.0.0",
-  "description": "A new Flutter project.",
+  "description": "FireShots POS: sistema de punto de venta para el bar Fire Shots (Plaza Norte, Pasto). Flutter + Firebase.",
   "main": "index.js",
   "directories": {
     "lib": "lib",
