@@ -1,0 +1,12 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "cloakroom",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "isReturned", "order": "ASCENDING" },
+        { "fieldPath": "ticketNumber", "order": "ASCENDING" }
+      ]
+    }
+  ]
+}
