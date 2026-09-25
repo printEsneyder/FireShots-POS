@@ -1,10 +1,71 @@
 # FireShots POS
 
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![Firestore](https://img.shields.io/badge/Firestore-FFA000?style=for-the-badge&logo=firebase&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![Riverpod](https://img.shields.io/badge/Riverpod-0E75B6?style=for-the-badge&logo=flutter&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+<p align="center">
+  <img src="assets/banner.png" alt="FireShots POS Banner" width="100%">
+</p>
+
 ## Descripción
 
 **FireShots POS** es un sistema de punto de venta (POS) diseñado para el bar **Fire Shots**, ubicado en **Plaza Norte, Pasto (Nariño, Colombia)**. Combina una **pantalla de menú digital** pensada para los clientes con un **panel de administración y un KDS (Kitchen Display System)** para el personal.
 
 El cliente puede ver el catálogo de licores, armar su carrito y enviar su pedido indicando el número de mesa; el personal recibe las órdenes **en tiempo real**, las prepara, las entrega y registra el pago respaldado con los datos de Nequi y Bre-B del negocio. El administrador, además, gestiona productos con fotos, controla si el bar está abierto o cerrado, revisa reportes de ventas, registra deudas con distribuidores y administra el guardarropa digital.
+
+## Demo en vivo
+
+La aplicación está desplegada y funcional. Puedes acceder desde:
+
+**https://fireshotspasto.web.app**
+
+> **Nota:** el menú digital es público. Para acceder al panel administrativo o al KDS necesitas credenciales; contacta al administrador para obtener una cuenta de prueba.
+
+## Funcionalidades principales
+
+| Módulo | Descripción |
+|--------|-------------|
+| ![Menú](https://img.shields.io/badge/Menú%20digital-FFB300?style=flat-square&logo=google&logoColor=white) | Catálogo de licores con carrito y pedido por mesa |
+| ![KDS](https://img.shields.io/badge/KDS-FF5722?style=flat-square&logo=google&logoColor=white) | Pantalla de cocina para gestionar pedidos en tiempo real |
+| ![Panel admin](https://img.shields.io/badge/Panel%20admin-7E57C2?style=flat-square&logo=google&logoColor=white) | Gestión de productos, reportes, deudas y configuración |
+| ![Ventas](https://img.shields.io/badge/Ventas-26A69A?style=flat-square&logo=google&logoColor=white) | Pantalla de ventas en tiempo real con el detalle de cada orden |
+| ![Guardarropa](https://img.shields.io/badge/Guardarropa-42A5F5?style=flat-square&logo=google&logoColor=white) | Tickets numerados con entrega digital |
+| ![Deudas externas](https://img.shields.io/badge/Deudas%20externas-EC407A?style=flat-square&logo=google&logoColor=white) | Registro de deudas con distribuidores |
+| ![Atención al cliente](https://img.shields.io/badge/Atención%20al%20cliente-66BB6A?style=flat-square&logo=google&logoColor=white) | Reservas por WhatsApp, PQRS e Instagram |
+
+## Capturas de pantalla
+
+Todas las capturas corresponden a la versión web desplegada.
+
+### Menú digital y carrito
+
+<p align="center">
+  <img src="assets/screenshots/menu.png" alt="Menú digital con catálogo de licores" width="460">
+  <br>
+  <img src="assets/screenshots/carrito.png" alt="Carrito de compras con el total en pesos" width="460">
+</p>
+
+### Recibo y pago con QR
+
+<p align="center">
+  <img src="assets/screenshots/recibo.png" alt="Recibo del pedido con QR de Nequi y Bre-B" width="720">
+</p>
+
+### Panel de administración
+
+<p align="center">
+  <img src="assets/screenshots/admin-dashboard.png" alt="Panel de control con estadísticas del día" width="720">
+</p>
+
+### Reportes de ventas
+
+<p align="center">
+  <img src="assets/screenshots/reportes-ventas.png" alt="Reportes con desempeño por mesero" width="720">
+</p>
 
 ## Funcionalidades
 
@@ -61,7 +122,13 @@ lib/
 │   ├── cloakroom/                             → guardarropa con tickets
 │   ├── orders/                                → pedidos, ventas, deudas y soporte
 │   └── admin/                                 → panel de administración
+assets/
+├── banner.png                                 → portada del README
+├── logos/                                     → logos de la app (empaquetado en el build)
+├── qr/                                        → códigos QR de Nequi y Bre-B (empaquetado)
+└── screenshots/                               → capturas del README (NO se empaqueta)
 firebase.json                                  → configuración de Hosting, Firestore y Storage
+.firebaserc                                    → proyecto activo de Firebase
 firestore.rules / storage.rules                → reglas de seguridad de Firebase
 ```
 
@@ -116,22 +183,30 @@ El punto de venta define dos roles por el campo `role` en Firestore (colección 
 2. Crea un documento en la colección `users` cuyo ID sea el **UID** del usuario.
 3. Agrega los campos: `displayName` (nombre visible) y `role: "admin"`.
 
-### 5. Ejecutar la aplicación
+### 5. Ejecutar la aplicación en local
 
 ```
-flutter run
+flutter run -d chrome
 ```
 
-Selecciona tu plataforma preferida (web, Android o Windows).
+También puedes usar `flutter run -d windows` o `flutter run` y elegir la plataforma en el menú. El modo debug abre DevTools en `http://127.0.0.1:9101` con recarga en caliente.
 
-### 6. Publicar en Firebase Hosting
+### 6. Compilar y publicar en Firebase Hosting
 
 ```
-flutter build web
-firebase deploy
+flutter build web --release
+firebase deploy --only hosting
 ```
 
-La aplicación quedará publicada en la dirección de tu sitio (por ejemplo `https://fireshotspasto.web.app`).
+La aplicación quedará publicada en `https://fireshotspasto.web.app`.
+
+> La carpeta `build/web` es la que se publica. No deben existir archivos ejecutables (`.exe`, `.dll`, `.bat`) dentro de `assets/`, porque el plan **Spark** de Firebase los rechaza y el deploy falla con `Executable files are forbidden on the Spark billing plan`.
+
+Si modificaste las reglas de seguridad, publícalas por separado:
+
+```
+firebase deploy --only firestore:rules,firestore:indexes,storage
+```
 
 > **Nota:** no olvides desplegar también las reglas de `firestore.rules` y `storage.rules` (Firestore y Storage) para securizar la lectura/escritura de datos.
 
@@ -154,12 +229,19 @@ Para crear usuarios adicionales: entra con la cuenta admin, crea el usuario en *
 
 ## Estado del proyecto
 
-El proyecto está funcional y listo para demostraciones. El análisis estático (`flutter analyze`) no reporta errores y la aplicación se compila correctamente para web.
+| Aspecto | Estado |
+|---------|--------|
+| Análisis estático | Sin errores (`flutter analyze`) |
+| Compilación web | Exitosa (`flutter build web --release`) |
+| Despliegue | Activo en Firebase Hosting |
+| Funcionamiento | Completo y listo para demostraciones |
+
+La compilación para Android e iOS no se ha verificado como parte del flujo de publicación; el proyecto incluye las carpetas de plataforma pero el despliegue se hace únicamente para web.
 
 ## Preguntas frecuentes
 
 **¿Cómo agrego un producto con foto?**
-Desde el panel de administración → **Productos** → botón **+**. Almacene el nombre, seleccione categoría, escriba el precio y el stock, y toque **Subir imagen** para cargarla desde la galería (se guarda en Cloudinary).
+Desde el panel de administración → **Productos** → botón **+**. Almacere el nombre, seleccione categoría, escriba el precio y el stock, y toque **Subir imagen** para cargarla desde la galería (se guarda en Cloudinary).
 
 **¿Por qué el cliente ve "Sistema cerrado"?**
 Porque el administrador apagó el sistema desde el panel. Vuelva a activarlo con el switch **Sistema Activo**.
@@ -170,8 +252,13 @@ Cree el usuario en Firebase Authentication y luego asigne su UID en la colecció
 **¿Cómo cambio el número de Nequi o Bre-B que ve el cliente?**
 Panel de administración → **Configuración** → edite los números y nombres de los titulares y guarde.
 
+**¿El deploy falla con "Executable files are forbidden"?**
+Hay un binario dentro de `assets/`. Bórralo y añade el patrón a `.gitignore` (por ejemplo `*.exe`). Está en `.gitignore` desde la versión actual.
+
 **¿Las reglas de seguridad están aplicadas?**
-Sí, el repositorio incluye `firestore.rules` y `storage.rules` con permisos por rol (lectura pública de productos y estado del bar; escritura solo con sesión iniciada). Despliegue ambas desde la pestaña Firestore y Storage de la consola de Firebase.
+El repositorio incluye `firestore.rules` y `storage.rules`. Debes publicarlas en la consola de Firebase con `firebase deploy --only firestore:rules,firestore:indexes,storage`; mientras no se desplieguen, la consola aplica las reglas del proyecto, que pueden ser distintas.
+
+Sobre el alcance de las reglas: la lectura de **productos** y **estado del bar** es pública (lo necesita el menú del cliente), y la escritura de **guardarropa**, **deudas externas** y **configuración** exige sesión iniciada. Ten en cuenta que las reglas Current evalúan únicamente que exista sesión, sin comprobar el campo `role`; por lo tanto cualquier cuenta autenticada, incluido el rol `staff`, puede escribir en la configuración del sistema. La colección **orders** tiene lectura pública, necesaria para los refrescos del KDS. Si necesitas restringir por rol o ocultar datos de pedidos a clientes, ajusta las reglas antes de operar.
 
 ## Autor
 
@@ -180,3 +267,19 @@ Sí, el repositorio incluye `firestore.rules` y `storage.rules` con permisos por
 - **Correo:** esneydribarra1970@gmail.com
 - **LinkedIn:** [esneyder-ibarra-rosero](https://www.linkedin.com/in/esneyder-ibarra-rosero)
 - **GitHub:** [printEsneydr](https://github.com/printEsneydr)
+
+---
+
+<p align="center">
+  Desarrollado por <a href="https://github.com/printEsneyder">Esneyder Ibarra Rosero</a>
+</p>
+
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/esneyder-ibarra-rosero">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+  </a>
+  <a href="mailto:esneydribarra1970@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
+  </a>
+</p>
