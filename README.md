@@ -146,7 +146,7 @@ Sigue estas instrucciones en orden para dejar el proyecto funcionando.
 ### 1. Copiar el proyecto y acceder a la carpeta
 
 ```
-git clone https://github.com/printEsneydr/FireShots-POS.git
+git clone https://github.com/printEsneyder/FireShots-POS.git
 cd FireShots-POS
 ```
 
@@ -266,7 +266,7 @@ Sobre el alcance de las reglas: la lectura de **productos** y **estado del bar**
 - **Teléfono:** +57 323 215 7962
 - **Correo:** esneydribarra1970@gmail.com
 - **LinkedIn:** [esneyder-ibarra-rosero](https://www.linkedin.com/in/esneyder-ibarra-rosero)
-- **GitHub:** [printEsneydr](https://github.com/printEsneydr)
+- **GitHub:** [printEsneyder](https://github.com/printEsneyder)
 
 ---
 
