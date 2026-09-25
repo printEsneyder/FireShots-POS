@@ -14,7 +14,7 @@ class CustomerMenuScreen extends ConsumerStatefulWidget {
 }
 
 class _CustomerMenuScreenState extends ConsumerState<CustomerMenuScreen>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late TabController _tabController;
   String _selectedCategory = 'Todos';
   bool _isOpen = true;
