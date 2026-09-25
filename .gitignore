@@ -34,6 +34,11 @@ migrate_working_dir/
 /build/
 /coverage/
 
+# Firebase build output and local secrets
+.firebaserc.bak
+*.exe
+
+
 # Symbolication related
 app.*.symbols
 
