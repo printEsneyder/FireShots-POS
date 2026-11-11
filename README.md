@@ -271,15 +271,16 @@ Sobre el alcance de las reglas: la lectura de **productos** y **estado del bar**
 ---
 
 <p align="center">
-  Desarrollado por <a href="https://github.com/printEsneyder">Esneyder Ibarra Rosero</a>
-</p>
-
-
-<p align="center">
+  Desarrollado por <a href="https://github.com/printEsneyder">Esneyder Ibarra Rosero</a> · 
+  <a href="https://esneyder-portfolio.vercel.app">Portafolio</a>
+  <br><br>
   <a href="https://www.linkedin.com/in/esneyder-ibarra-rosero">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
   </a>
   <a href="mailto:esneydribarra1970@gmail.com">
     <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
+  </a>
+  <a href="https://esneyder-portfolio.vercel.app">
+    <img src="https://img.shields.io/badge/Portfolio-66735B?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio">
   </a>
 </p>
